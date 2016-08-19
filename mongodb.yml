@@ -1,0 +1,6 @@
+development:
+  clients:
+    default:
+      database: issue_tracker
+      hosts: 
+        mongodb://localhost:27017
