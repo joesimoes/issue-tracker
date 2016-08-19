@@ -5,8 +5,8 @@ class App < Sinatra::Base
     "Hello" 
   end
 	
-	get "/issues" do
-		@issues = Issue.all
-		@issues
-	end
+  get "/issues" do
+    @issues = Issue.all
+    @issues
+  end
 end

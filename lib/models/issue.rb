@@ -1,7 +1,7 @@
 class Issue
-	include Mongoid::Document
-	include Mongoid::Timestamps::Updated
+  include Mongoid::Document
+  include Mongoid::Timestamps::Updated
 
-	field :name, type: String
-	field :description, type: String
+  field :name, type: String
+  field :description, type: String
 end
