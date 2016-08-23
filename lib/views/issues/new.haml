@@ -1,15 +1,3 @@
 %h1 New issue
 
-%form(action="/issues" method="post")
-  %p 
-    %label(for="issue_name") Name
-    %input(type="text" id="issue_name" value="#{@issue.name}" name="issue[name]" class="form-control")
-
-  %p
-    %label(for="issue_description") Description
-    %textarea(name="issue[description]" class="form-control")
-      = @issue.description
-
-  %p 
-    %button.btn.btn-primary
-      Create one
+= partial "issues/_form", locals: {issue: @issue }

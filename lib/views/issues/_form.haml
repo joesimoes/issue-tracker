@@ -1,0 +1,18 @@
+%form(action="/issues#{ !issue.new_record? ? "/#{issue.id}" : "" }" method="post")
+  %p 
+    %label(for="issue_name") Name
+    %input(type="text" id="issue_name" value="#{issue.name}" name="issue[name]" class="form-control")
+
+  %p
+    %label(for="issue_description") Description
+    %textarea(name="issue[description]" class="form-control")
+      = issue.description
+
+  %p 
+    - unless issue.new_record?
+      %input(type="hidden" name="_method" value="put")
+    %button.btn.btn-primary
+      - if issue.new_record?
+        Create issue
+      - else
+        Update issue
