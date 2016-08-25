@@ -34,6 +34,8 @@ class App < Sinatra::Base
     @issue = Issue.new params[:issue]
     if @issue.save
       redirect "/"
+    else
+      haml :"issues/new"
     end
   end
 
@@ -46,6 +48,8 @@ class App < Sinatra::Base
     @issue = Issue.find params[:id]
     if @issue.update_attributes params[:issue]
       redirect "/"
+    else
+      haml :"issues/new"
     end
   end
 end
