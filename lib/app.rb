@@ -1,4 +1,5 @@
 require_relative "../lib/models/issue"
+require_relative "../lib/models/comment"
 
 class App < Sinatra::Base
 	enable :sessions
@@ -44,12 +45,26 @@ class App < Sinatra::Base
     haml :"issues/edit"
   end
 
+  get "/issues/:id" do
+    @issue = Issue.find params[:id]
+    haml :"issues/show"
+  end
+
   put "/issues/:id" do
     @issue = Issue.find params[:id]
     if @issue.update_attributes params[:issue]
       redirect "/"
     else
       haml :"issues/new"
+    end
+  end
+
+  post "/issues/:id/comments" do
+    @issue = Issue.find params[:id]
+    if @issue.comments.create params[:comment]
+      redirect "/issues/#{params[:id]}"
+    else
+      render :"issues/show"
     end
   end
 end
