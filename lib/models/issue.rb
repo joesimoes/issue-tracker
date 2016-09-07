@@ -11,4 +11,5 @@ class Issue
   field :status, type: Symbol, default: :new
 
   embeds_many :comments
+  belongs_to :project
 end

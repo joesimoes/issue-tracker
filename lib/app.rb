@@ -1,5 +1,6 @@
 require_relative "../lib/models/issue"
 require_relative "../lib/models/comment"
+require_relative "../lib/models/project"
 
 class App < Sinatra::Base
 	enable :sessions
@@ -66,5 +67,15 @@ class App < Sinatra::Base
     else
       render :"issues/show"
     end
+  end
+
+  get "/projects" do
+    @projects = Project.all
+    haml :"projects/index"
+  end
+
+  get "/projects/:id" do
+    @project = Project.find params[:id]
+    haml :"projects/show"
   end
 end

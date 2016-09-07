@@ -1,5 +1,10 @@
 %h1
   = @issue.name
+  - if @issue.project?
+    %small
+      from
+      %a(href="/projects/#{@issue.project.id}")
+        = @issue.project.name
 
 .well
   = @issue.description
